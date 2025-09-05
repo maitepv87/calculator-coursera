@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Button } from "./components";
 
@@ -7,7 +7,10 @@ function App() {
   const [result, setResult] = useState(0);
   const [error, setError] = useState("");
 
-  const parseInput = () => Number(inputValue) || 0;
+  const parseInput = () => {
+    const value = Number(inputValue);
+    return isNaN(value) ? null : value;
+  };
 
   const handleAdd = () => {
     setResult((prev) => prev + parseInput());
@@ -49,24 +52,36 @@ function App() {
       <div>
         <h1>Simplest Calculator</h1>
       </div>
-      <form>
+      <div>
         <p className="result">{result}</p>
         {error && <p className="error">{error}</p>}
 
         <input
-          pattern="[0-9]"
           type="number"
+          min="0"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Type a number"
         />
-        <Button onClick={handleAdd}>Add</Button>
-        <Button onClick={handleSubtract}>Subtract</Button>
-        <Button onClick={handleMultiply}>Multiply</Button>
-        <Button onClick={handleDivide}>Divide</Button>
-        <Button onClick={handleResetInput}>Reset Input</Button>
-        <Button onClick={handleResetResult}>Reset Result</Button>
-      </form>
+        <Button variant="primary" onClick={handleAdd}>
+          Add
+        </Button>
+        <Button variant="primary" onClick={handleSubtract}>
+          Subtract
+        </Button>
+        <Button variant="primary" onClick={handleMultiply}>
+          Multiply
+        </Button>
+        <Button variant="primary" onClick={handleDivide}>
+          Divide
+        </Button>
+        <Button variant="danger" onClick={handleResetInput}>
+          Reset Input
+        </Button>
+        <Button variant="danger" onClick={handleResetResult}>
+          Reset Result
+        </Button>
+      </div>
     </div>
   );
 }

@@ -12,20 +12,50 @@
     background: #eee;
 }
 
-
-button:nth-child(3),
-button:nth-child(4),
-button:nth-child(5),
-button:nth-child(6) {
-    background: #0077cc;
-    color: white;
-    border: none;
+.button {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
+.button:focus {
+    outline: 2px solid #333;
+    outline-offset: 2px;
+}
 
-button:nth-last-child(2),
-button:nth-last-child(1) {
+.primary {
+    background: #0077cc;
+    color: white;
+}
+
+.primary:hover {
+    background: #005fa3;
+}
+
+.danger {
     background: #cc3300;
     color: white;
-    border: none;
+}
+
+.danger:hover {
+    background: #a32900;
+}
+
+.button:focus {
+    outline: 2px solid #333;
+    outline-offset: 2px;
+}
+
+.primary {
+    background: #0077cc;
+    color: white;
+}
+
+.danger {
+    background: #cc3300;
+    color: white;
 }

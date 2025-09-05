@@ -2,6 +2,9 @@
 
 This project was built as part of the **React Basics** course on Coursera. Its goal is to demonstrate foundational React skills by building a simple and functional calculator app.
 
+## Screenshot
+![Calculator App Screenshot](./assets/Screenshot.png)
+
 ## Project Overview
 
 The app allows users to perform basic arithmetic operations (addition, subtraction, multiplication, division) with a clean, responsive UI built in React. It was designed to showcase state handling, event binding, and component-based architecture.
