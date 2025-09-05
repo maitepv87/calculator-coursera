@@ -4,9 +4,7 @@ This project was built as part of the **React Basics** course on Coursera. Its g
 
 ## Screenshot
 
-<p align="center">
-  <img src="./assets/Screenshot.png" alt="Calculator App Screenshot" width="600"/>
-</p>
+![Calculator App Screenshot](./src/assets/Screenshot.png)
 
 ## Project Overview
 
