@@ -1,77 +1,71 @@
 import { useState, useRef } from "react";
 import "./App.css";
+import { Button } from "./components";
 
 function App() {
-  const inputRef = useRef(null);
-  const resultRef = useRef(null);
+  const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState(0);
+  const [error, setError] = useState("");
 
-  const plus = (e) => {
-    e.preventDefault();
-    setResult((result) => result + Number(inputRef.current.value));
+  const parseInput = () => Number(inputValue) || 0;
+
+  const handleAdd = () => {
+    setResult((prev) => prev + parseInput());
+    setError("");
   };
 
-  const minus = (e) => {
-    e.preventDefault();
-    setResult((result) => result - Number(inputRef.current.value));
+  const handleSubtract = () => {
+    setResult((prev) => prev - parseInput());
+    setError("");
   };
 
-  const times = (e) => {
-    e.preventDefault();
-    setResult((result) => result * Number(inputRef.current.value));
+  const handleMultiply = () => {
+    setResult((prev) => prev * parseInput());
+    setError("");
   };
 
-  const divide = (e) => {
-    e.preventDefault();
-    const inputValue = Number(inputRef.current.value);
-    if (inputValue === 0) {
-      alert("Cannot divide by zero!");
+  const handleDivide = () => {
+    const value = parseInput();
+    if (value === 0) {
+      setError("Cannot be divided by zero");
       return;
     }
-    setResult((result) => result / inputValue);
+    setResult((prev) => prev / value);
+    setError("");
   };
 
-  const resetInput = (e) => {
-    e.preventDefault();
-    inputRef.current.value = "";
+  const handleResetInput = () => {
+    setInputValue("");
+    setError("");
   };
 
-  const resetResult = (e) => {
-    e.preventDefault();
+  const handleResetResult = () => {
     setResult(0);
+    setError("");
   };
 
   return (
     <div className="App">
       <div>
-        <h1>Simplest Working Calculator</h1>
+        <h1>Simplest Calculator</h1>
       </div>
       <form>
-        <p ref={resultRef}>{result}</p>
+        <p className="result">{result}</p>
+        {error && <p className="error">{error}</p>}
+
         <input
           pattern="[0-9]"
-          ref={inputRef}
           type="number"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           placeholder="Type a number"
         />
-        <button type="button" onClick={plus}>
-          add
-        </button>
-        <button type="button" onClick={minus}>
-          subtract
-        </button>
-        <button type="button" onClick={times}>
-          multiply
-        </button>
-        <button type="button" onClick={divide}>
-          divide
-        </button>
-        <button type="button" onClick={resetInput}>
-          resetInput
-        </button>
-        <button type="button" onClick={resetResult}>
-          resetResult
-        </button>
+        <Button onClick={handleAdd}>Add</Button>
+        <Button onClick={handleSubtract}>Subtract</Button>
+        <Button onClick={handleMultiply}>Multiply</Button>
+        <Button onClick={handleDivide}>Divide</Button>
+        <Button onClick={handleResetInput}>Reset Input</Button>
+        <Button onClick={handleResetResult}>Reset Result</Button>
       </form>
     </div>
   );
