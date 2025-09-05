@@ -3,7 +3,10 @@
 This project was built as part of the **React Basics** course on Coursera. Its goal is to demonstrate foundational React skills by building a simple and functional calculator app.
 
 ## Screenshot
-![Calculator App Screenshot](./assets/Screenshot.png)
+
+<p align="center">
+  <img src="./assets/Screenshot.png" alt="Calculator App Screenshot" width="600"/>
+</p>
 
 ## Project Overview
 
